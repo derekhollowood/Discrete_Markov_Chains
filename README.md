@@ -1,2 +1,2 @@
 # Discrete_Markov_Chains
-Simulates discrete Markov chains.
+Python code for a discrete Markov chain class.
