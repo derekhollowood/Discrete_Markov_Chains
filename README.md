@@ -1,8 +1,55 @@
 # Discrete_Markov_Chains
-Python class for discrete Markov chains.
+Python class for discrete Markov chains.  Includes a few common Markov chains.
 
 ## Examples
-### User specified Markov chain
+### User-defined Markov chain
+```ipython3
+In [1]: import Discrete_Markov_Chains as dmc
+
+In [2]: P = {}
+
+In [3]: P['A'] = dmc.dsp.dsp({'B' : 2/3, 'C' : 1/3})
+
+In [4]: P['B'] = dmc.dsp.dsp({'C' : 2/3, 'A' : 1/3})
+
+In [5]: P['C'] = dmc.dsp.dsp({'A' : 2/3, 'B' : 1/3})
+
+In [6]: MC = dmc.discrete_markov_chain(P)
+
+In [7]: walk = dmc.mcwalk(MC, 'A')
+
+In [8]: walk.walk(19)
+
+In [9]: walk
+Out[9]: 
+A
+C
+A
+C
+A
+C
+A
+B
+C
+A
+B
+C
+B
+C
+A
+B
+C
+B
+C
+A
+
+In [10]: walk.sample_dist()
+Out[10]: 
+C : 0.4
+A : 0.35
+B : 0.25
+
+### Bitstring chain
 ```ipython3
 In [1]: import Discrete_Markov_Chains as dmc
 
