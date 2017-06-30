@@ -8,17 +8,29 @@ In [1]: import Discrete_Markov_Chains as dmc
 
 In [2]: P = {}
 
+-- P will represent the transition matrix
+
 In [3]: P['A'] = dmc.dsp.dsp({'B' : 2/3, 'C' : 1/3})
 
 In [4]: P['B'] = dmc.dsp.dsp({'C' : 2/3, 'A' : 1/3})
 
 In [5]: P['C'] = dmc.dsp.dsp({'A' : 2/3, 'B' : 1/3})
 
+-- "dsp" is for "discrete probability space".
+-- These lines create the transition probabilities.
+-- For instance from state A there is a 2/3 probability of moving to B and a 1/3 probability of moving to C.
+
 In [6]: MC = dmc.dmc(P)
+
+-- Create a Markov chain from P.
 
 In [7]: walk = dmc.mcwalk(MC, 'A')
 
+-- Initial state is A.
+
 In [8]: walk.walk(19)
+
+-- Go 19 steps.
 
 In [9]: walk
 Out[9]: 
@@ -48,6 +60,8 @@ Out[10]:
 C : 0.4
 A : 0.35
 B : 0.25
+
+-- Sample distribution from the walk.  In the long run these probabilities should all converge to 1/3.
 ```
 
 ### Bitstring chain
@@ -91,6 +105,9 @@ Out[6]:
 101 : 0.35
 110 : 0.05
 111 : 0.3
+
+-- At each step a randomly selected bit is switched.
+-- This walk never hit the states 010 or 100.
 ```
 
 ### Simple Symmetric Random Walk
@@ -126,6 +143,8 @@ Out[5]:
 -2
 -1
 0
+
+-- This chain goes up or down by 1 at each step with equal probability.
 ```
 
 ### Sliding Puzzle
@@ -178,4 +197,6 @@ Out[7]:
 [[1 4 2]
  [3 5 0]
  [6 7 8]]
+ 
+ -- At each step the 0 switches places with one of its neighboring entries each with equal probability.
  ```
